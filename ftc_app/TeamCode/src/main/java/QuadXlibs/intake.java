@@ -12,17 +12,14 @@ public class Intake{
     private DcMotor intakeBR;
 
     public Intake(LinearOpMode opMode){
-        intakeFL = opMode.hardwareMap.dcMotor.get("intakeFL");
-        intakeBR = opMode.hardwareMap.dcMotor.get("intakeBR");
+        intake = opMode.hardwareMap.dcMotor.get("intake");
 
-        intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
-        intakeBR.setDirection(DcMotorSimple.Direction.REVERSE);
+        intake.setDirection(DcMotorSimple.Direction.FORWARD);
 
     }
 
     public void setPower(double Power) {
-        intakeFL.setPower(-Power);
-        intakeBR.setPower(Power);
+        intake.setPower(Power);
 
     }
 
@@ -30,13 +27,11 @@ public class Intake{
         ElapsedTime time = new ElapsedTime();
 
         while (time.seconds() < timeout && opMode.opModeIsActive()) {
-            intakeLF.setPower(-1);
-            intakeBR.setPower(-1);
+            intake.setPower(1);
 
         }
-        intakeFL.setPower(0);
-        intakeBR.setPower(0);
+        intake.setPower(0);
 
     }
-    }
+    
 }
