@@ -1,36 +1,35 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.QuadXlibs;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class Intake{
+public class intake {
     private LinearOpMode opMode;
 
-    private DcMotor intakeFL;
-    private DcMotor intakeBR;
+    private DcMotor intakeMotor;
 
-    public Intake(LinearOpMode opMode){
-        intake = opMode.hardwareMap.dcMotor.get("intake");
+    public intake(LinearOpMode opMode){
+        intakeMotor = opMode.hardwareMap.dcMotor.get("intake");
 
-        intake.setDirection(DcMotorSimple.Direction.FORWARD);
+        intakeMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
     }
 
     public void setPower(double Power) {
-        intake.setPower(Power);
+        intakeMotor.setPower(Power);
 
     }
 
-    public void intake(double timeout){
+    public void Intake(double timeout){
         ElapsedTime time = new ElapsedTime();
 
         while (time.seconds() < timeout && opMode.opModeIsActive()) {
-            intake.setPower(1);
+            intakeMotor.setPower(1);
 
         }
-        intake.setPower(0);
+        intakeMotor.setPower(0);
 
     }
     

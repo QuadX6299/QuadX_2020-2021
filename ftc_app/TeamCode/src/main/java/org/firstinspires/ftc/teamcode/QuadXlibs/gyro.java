@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.QuadXlibs;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
@@ -17,7 +17,7 @@ public class gyro {
     public gyro(LinearOpMode opMode, boolean IMUenabled) {
         this.opMode = opMode;
 
-        if (IMUenabled){ASDASD
+        if (IMUenabled){
             BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
 
             parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;

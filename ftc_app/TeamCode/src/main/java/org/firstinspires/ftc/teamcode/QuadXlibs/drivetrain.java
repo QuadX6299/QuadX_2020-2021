@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.QuadXlibs;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -59,7 +59,7 @@ public class drivetrain {
     }
 
     public void setPower(double LPower, double RPower) {
-        double max = Math.max(Math.abs(LPower), Math.abs(Rpower));
+        double max = Math.max(Math.abs(LPower), Math.abs(RPower));
 
         if(max > 1){
             LPower /= max;

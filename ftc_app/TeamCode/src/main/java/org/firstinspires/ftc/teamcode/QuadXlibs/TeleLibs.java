@@ -1,6 +1,7 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.QuadXlibs;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -46,7 +47,7 @@ public abstract class TeleLibs extends OpMode {
         if ((Math.abs(gamepad1.left_stick_y) > .1) ||
                 Math.abs(gamepad1.right_stick_x) > .1) {
 
-            if (Math.abs(left_stick_y > .1)){
+            if (Math.abs(gamepad1.left_stick_y) > .1){
                 frontLeft.setPower(-gamepad1.left_stick_y);
                 frontRight.setPower(-gamepad1.left_stick_y);
                 backLeft.setPower(-gamepad1.left_stick_y);
