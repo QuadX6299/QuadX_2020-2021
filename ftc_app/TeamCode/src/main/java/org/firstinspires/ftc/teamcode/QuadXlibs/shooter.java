@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
-public class shooter{
+public class Shooter{
     private LinearOpMode opMode;
 
     public DcMotor shooter;
@@ -20,7 +20,7 @@ public class shooter{
 
 
 
-    public shooter(LinearOpMode opMode) {
+    public Shooter(LinearOpMode opMode) {
         this.opMode = opMode;
 
         shooter = opMode.hardwareMap.dcMotor.get("shooter");

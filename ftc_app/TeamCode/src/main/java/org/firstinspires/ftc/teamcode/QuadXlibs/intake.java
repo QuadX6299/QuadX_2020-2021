@@ -5,12 +5,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class intake {
+public class Intake {
     private LinearOpMode opMode;
 
     private DcMotor intakeMotor;
 
-    public intake(LinearOpMode opMode){
+    public Intake(LinearOpMode opMode){
         intakeMotor = opMode.hardwareMap.dcMotor.get("intake");
 
         intakeMotor.setDirection(DcMotorSimple.Direction.FORWARD);

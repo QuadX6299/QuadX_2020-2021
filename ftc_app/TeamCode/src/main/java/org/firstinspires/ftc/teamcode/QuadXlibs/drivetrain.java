@@ -5,55 +5,55 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class drivetrain {
+public class Drivetrain {
 
     private LinearOpMode opMode;
     private gyro Gyro;
 
-    private DcMotor frontLeft;
-    private DcMotor backLeft;
-    private DcMotor frontRight;
-    private DcMotor backRight;
+    private DcMotor fl;
+    private DcMotor bl;
+    private DcMotor fr;
+    private DcMotor br;
 
-    public drivetrain(LinearOpMode opMode) {
+    public Drivetrain(LinearOpMode opMode) {
         this.opMode = opMode;
 
         Gyro = new gyro(opMode, true);
 
-        frontLeft = opMode.hardwareMap.dcMotor.get("frontLeft");
-        backLeft = opMode.hardwareMap.dcMotor.get("backLeft");
-        frontRight = opMode.hardwareMap.dcMotor.get("frontRight");
-        backRight = opMode.hardwareMap.dcMotor.get("backRight");
+        fl = opMode.hardwareMap.dcMotor.get("fl");
+        bl = opMode.hardwareMap.dcMotor.get("bl");
+        fr = opMode.hardwareMap.dcMotor.get("fr");
+        br = opMode.hardwareMap.dcMotor.get("br");
 
-        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        fl.setDirection(DcMotorSimple.Direction.FORWARD);
+        bl.setDirection(DcMotorSimple.Direction.FORWARD);
+        fr.setDirection(DcMotorSimple.Direction.REVERSE);
+        br.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
     }
 
     public void resetEncoders() {
-        frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         opMode.idle();
-        backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         opMode.idle();
-        frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         opMode.idle();
-        backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         opMode.idle();
 
-        frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        fl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         opMode.idle();
-        backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        bl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         opMode.idle();
-        frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        fr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         opMode.idle();
-        backRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        br.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         opMode.idle();
 
     }
@@ -66,33 +66,33 @@ public class drivetrain {
             RPower /=max;
         }
 
-        frontLeft.setPower(LPower);
-        backLeft.setPower(LPower);
-        frontRight.setPower(RPower);
-        backRight.setPower(RPower);
+        fl.setPower(LPower);
+        bl.setPower(LPower);
+        fr.setPower(RPower);
+        br.setPower(RPower);
 
     }
 
     public void stopMotors() {
-        frontLeft.setPower(0);
-        backLeft.setPower(0);
-        frontRight.setPower(0);
-        backRight.setPower(0);
+        fl.setPower(0);
+        bl.setPower(0);
+        fr.setPower(0);
+        br.setPower(0);
 
     }
 
     public void turn(double power, boolean right) {
         if (right) {
-            frontLeft.setPower(power);
-            backLeft.setPower(-power);
-            frontRight.setPower(power);
-            backRight.setPower(-power);
+            fl.setPower(power);
+            bl.setPower(-power);
+            fr.setPower(power);
+            br.setPower(-power);
 
         } else {
-            frontLeft.setPower(-power);
-            backLeft.setPower(power);
-            frontRight.setPower(-power);
-            backRight.setPower(power);
+            fl.setPower(-power);
+            bl.setPower(power);
+            fr.setPower(-power);
+            br.setPower(power);
 
         }
 
@@ -100,18 +100,18 @@ public class drivetrain {
 
     public double getAvgEncoder(){
 
-        double avgAdd = Math.abs(frontLeft.getCurrentPosition()) + Math.abs(backLeft.getCurrentPosition()) + Math.abs(frontRight.getCurrentPosition()) + Math.abs(backRight.getCurrentPosition());
+        double avgAdd = Math.abs(fl.getCurrentPosition()) + Math.abs(bl.getCurrentPosition()) + Math.abs(fr.getCurrentPosition()) + Math.abs(br.getCurrentPosition());
         double div = 4.0;
-        if(frontLeft.getCurrentPosition() == 0){
+        if(fl.getCurrentPosition() == 0){
             div --;
         }
-        if(backLeft.getCurrentPosition() == 0){
+        if(bl.getCurrentPosition() == 0){
             div --;
         }
-        if(frontRight.getCurrentPosition() == 0){
+        if(fr.getCurrentPosition() == 0){
             div --;
         }
-        if(backRight.getCurrentPosition() == 0){
+        if(br.getCurrentPosition() == 0){
             div --;
         }
         if(div == 0){

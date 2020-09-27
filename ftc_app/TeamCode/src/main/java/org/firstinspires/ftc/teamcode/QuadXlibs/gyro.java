@@ -7,14 +7,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-public class gyro {
+public class Gyro {
 
     private LinearOpMode opMode;
 
     private BNO055IMU Gyro;
     private Orientation angles;
 
-    public gyro(LinearOpMode opMode, boolean IMUenabled) {
+    public Gyro(LinearOpMode opMode, boolean IMUenabled) {
         this.opMode = opMode;
 
         if (IMUenabled){
